@@ -8,12 +8,12 @@
 
 This repository is organized by chapters, with each chapter having its own subfolder, such as `Chap-2`, `Chap-3`, etc. Inside each chapter's folder, you will find Python notebooks, scripts, and resources related to the topics covered in that chapter. Please note that Chapter 1 does not include code as it serves as an introduction to the concepts of Trustworthy AI.
 
-- `Chap-1`: Introduction to Trustworthy AI (No code examples)
-- `Chap-2`: Reliability: Uncertainty Quantification in Artificial Intelligence
-- `Chap-3`: Security of Artificial Intelligence: Adversarial Attacks
-- `Chap-4`: Transparency and Explainability
-- `Chap-5`: Privacy-Preserving Artificial Intelligence: Federated Learning
-- `Chap-6`: Privacy-Preserving Artificial Intelligence: Homomorphic Encryption
+- [`Chap-1`](Chap-1): Introduction to Trustworthy AI (No code examples)
+- [`Chap-2`](Chap-2): Reliability: Uncertainty Quantification in Artificial Intelligence
+- [`Chap-3`](Chap-3): Security of Artificial Intelligence: Adversarial Attacks
+- [`Chap-4`](Chap-4): Transparency and Explainability
+- [`Chap-5`](Chap-5): Privacy-Preserving Artificial Intelligence: Federated Learning
+- [`Chap-6`](Chap-6): Privacy-Preserving Artificial Intelligence: Homomorphic Encryption
 - Additional resources and updates can be found in the respective chapter folders.
 
 ## Getting Started
