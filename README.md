@@ -18,7 +18,7 @@ This repository is organized by chapters, with each chapter having its own subfo
 
 ## Getting Started
 
-To get started with the code examples in this repository, we recommend setting up a Python environment with the required libraries. Most examples can be run in environments like Jupyter Notebooks or directly as Python scripts. Ensure you have Python 3.x installed along with libraries such as `numpy`, `scipy`, `matplotlib`, `tensorflow`, `pytorch`, `sklearn`, and others as required by specific chapters.
+To get started with the code examples in this repository, we recommend setting up a Python environment with the required libraries. Most examples can be run in environments like Jupyter Notebooks or directly as Python scripts. Ensure you have Python 3.x installed along with libraries such as `numpy`, `scipy`, `matplotlib`, `tensorflow`, `keras`, `Cleverhans`, `PyFHEL`, `sklearn`, and others as required by specific chapters.
 
 ## Contributing
 
