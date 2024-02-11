@@ -50,4 +50,6 @@ plt.xticks(tick_marks, range(10), rotation=45)
 plt.yticks(tick_marks, range(10))
 plt.xlabel('Predicted')
 plt.ylabel('True')
+
+# Show the plot
 plt.show()

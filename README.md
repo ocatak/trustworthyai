@@ -4,6 +4,18 @@
 
 "Trustworthy AI: From Theory to Practice" is a comprehensive guide focused on implementing and developing AI models that adhere to the principles of trustworthiness, including privacy, security, and robustness. Through practical implementations and examples using Python, this book aims to equip readers with the skills and knowledge necessary to integrate these crucial aspects into AI projects. It covers a wide range of topics, from uncertainty quantification and adversarial machine learning to privacy-preserving techniques like federated learning and homomorphic encryption, providing a solid foundation for building ethical and reliable AI systems.
 
+
+## Access the Book
+
+You can find "Trustworthy AI: From Theory to Practice" on Amazon to get a physical or Kindle copy of the book. Here is the link to the Amazon page:
+
+["Trustworthy AI: From Theory to Practice" on Amazon](https://a.co/d/hp2F8GP)
+
+
+
+
+![Cover Image](path/to/book-cover.jpg)
+
 ## Repository Structure
 
 This repository is organized by chapters, with each chapter having its own subfolder, such as `Chap-2`, `Chap-3`, etc. Inside each chapter's folder, you will find Python notebooks, scripts, and resources related to the topics covered in that chapter. Please note that Chapter 1 does not include code as it serves as an introduction to the concepts of Trustworthy AI.

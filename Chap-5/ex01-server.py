@@ -5,7 +5,7 @@ Created on Thu Nov  2 11:07:44 2023
 
 @author: ozgur
 """
-
+# Import libraries
 import flwr as fl
 
 # Start Flower server

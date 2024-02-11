@@ -3,17 +3,23 @@
 """
 Created on Mon Sep 18 10:19:54 2023
 
-@author: ozgur
+@author: ozgur and murat
 """
-
+#==============================================================================
+### Part 1
+#Import Libraries
 import tensorflow as tf
 import uncertainty_wizard as uwiz
 from tqdm.keras import TqdmCallback
 
 # Load the MNIST digits dataset
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize pixel values to the range [0, 1]
 x_train = (x_train.astype('float32') / 255).reshape(x_train.shape[0], 28, 28, 1)
 x_test = (x_test.astype('float32') / 255).reshape(x_test.shape[0], 28, 28, 1)
+
+# Convert labels to one-hot encoding
 y_train = tf.keras.utils.to_categorical(y_train, num_classes=10)
 
 # Create the model
@@ -30,7 +36,6 @@ model.add(tf.keras.layers.Dense(128, activation='relu'))
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
 
 # Compiling and fitting is the same as in regular keras models as well:
-
 model.compile(loss=tf.keras.losses.categorical_crossentropy,
               optimizer='rmsprop',
               metrics=['accuracy'])
@@ -38,33 +43,34 @@ model.compile(loss=tf.keras.losses.categorical_crossentropy,
 model.fit(x_train, y_train, validation_split=0.1, batch_size=10000, epochs=20,
           verbose=0, callbacks=[TqdmCallback(verbose=1)])
 
-quantifiers = ['var_ratio', 'pred_entropy', 'mutu_info', 'mean_softmax']
+# quantifiers = ['var_ratio', 'pred_entropy', 'mutu_info', 'mean_softmax']
+quantifiers = ['var_ratio', 'pred_entropy', 'mean_softmax']
 results = model.predict_quantified(x_test,
                                    quantifier=quantifiers,
                                    batch_size=64,
                                    sample_size=32,
                                    verbose=0)
 
-
+#==============================================================================
 ### Part 2
 
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Initialize the random number generator
 np.random.seed(10)
 
 # Calculate the predictions and prediction uncertainties using the pcs and mean_softmax quantifiers
 pcs_predictions, pcs_uncertainties = results[0]
 pred_entropy_predictions, pred_entropy_uncertainties = results[1]
-mutu_info_predictions, mutu_info_uncertainties = results[2]
-mean_softmax_predictions, mean_softmax_uncertainties = results[3]
+mean_softmax_predictions, mean_softmax_uncertainties = results[2]
 
-# Calculate the confusion matrix
+# Compute the confusion matrix
 confusion_mtx = confusion_matrix(y_test, pcs_predictions)
 
-# Create a subplot with 2 rows and 3 columns
-fig, axs = plt.subplots(2, 3, figsize=(15, 10))
+# Create a subplot with 2 rows and 2 columns
+fig, axs = plt.subplots(2, 2, figsize=(15, 10))
 
 # Increase the font size for all subplots
 fontsize = 20
@@ -81,13 +87,13 @@ axs[0, 1].set_xlabel('Prediction uncertainty (PredictiveEntropy)', fontsize=font
 axs[0, 1].set_ylabel('Count', fontsize=fontsize)
 axs[0, 1].set_title('Uncertainty - PredictiveEntropy', fontsize=fontsize)
 
-# Plot a histogram of the prediction uncertainties from mutu_info in the third subplot
-axs[0, 2].hist(mutu_info_uncertainties, bins=50)
-axs[0, 2].set_xlabel('Mutual Information', fontsize=fontsize)
-axs[0, 2].set_ylabel('Count', fontsize=fontsize)
-axs[0, 2].set_title('Uncertainty - MutualInformation', fontsize=fontsize)
+# # Plot a histogram of the prediction uncertainties from mutu_info in the third subplot
+# axs[0, 2].hist(mutu_info_uncertainties, bins=50)
+# axs[0, 2].set_xlabel('Mutual Information', fontsize=fontsize)
+# axs[0, 2].set_ylabel('Count', fontsize=fontsize)
+# axs[0, 2].set_title('Uncertainty - MutualInformation', fontsize=fontsize)
 
-# Plot a histogram of the prediction uncertainties from mean_softmax in the fourth subplot
+# Plot a histogram of the prediction uncertainties from mean_softmax in the third subplot
 axs[1, 0].hist(mean_softmax_uncertainties, bins=50)
 axs[1, 0].set_xlabel('Mean Softmax', fontsize=fontsize)
 axs[1, 0].set_ylabel('Count', fontsize=fontsize)
@@ -102,16 +108,17 @@ axs[1, 1].set_ylabel('True label', fontsize=fontsize)
 axs[1, 1].set_title('Confusion Matrix', fontsize=fontsize)
 
 # Remove the unused subplot
-fig.delaxes(axs[1, 2])
+#fig.delaxes(axs[1, 2])
 
 # Adjust the padding between the subplots
 plt.tight_layout()
 
-#plt.savefig("../../../Module-2-Uncertainty_files/Module-2-Uncertainty_6_0.pdf",bbox_inches='tight')
+# plt.savefig("Module-2-Uncertainty_6_0.pdf",bbox_inches='tight')
 
 # Show the plot
 plt.show()
 
+#==============================================================================
 # Part 3
 
 # Set a threshold to determine highly uncertain instances
@@ -131,6 +138,7 @@ fig, axs = plt.subplots(rows, 5, figsize=(20, rows*4))
 # Increase the font size for titles
 title_fontsize = 20
 
+# Initiate a Loop to Iterate Highly Uncertain Images
 for i, idx in enumerate(highly_uncertain_indices):
     row, col = divmod(i, 5)
     axs[row, col].imshow(x_test[idx, :, :, 0], cmap='gray')
@@ -141,11 +149,12 @@ for i, idx in enumerate(highly_uncertain_indices):
 # Adjust the padding between the subplots
 plt.tight_layout()
 
-# plt.savefig("../../../Module-2-Uncertainty_files/Module-2-Uncertainty_8_0.pdf",bbox_inches='tight')
+# plt.savefig("Module-2-Uncertainty_8_0.pdf",bbox_inches='tight')
 
 # Show the plot
 plt.show()
 
+#==============================================================================
 # Part 4
 
 # Display the highly uncertain images
@@ -156,6 +165,7 @@ fig, axs = plt.subplots(rows, 5, figsize=(20, rows*4))
 # Increase the font size for axes labels
 axes_label_fontsize = 25
 
+# Initiate a Loop to Iterate Highly Uncertain Images
 for i, idx in enumerate(highly_uncertain_indices):
     row, col = divmod(i, 5)
     predictions = model.inner.predict(np.expand_dims(x_test[idx], axis=0), verbose=0)[0]
@@ -168,9 +178,12 @@ for i, idx in enumerate(highly_uncertain_indices):
     axs[row, col].set_ylim(0.00, 0.5)
     axs[row, col].grid()
 
+# Adjust the padding between the subplots
 plt.tight_layout()
 
-#plt.savefig("../../../Module-2-Uncertainty_files/Module-2-Uncertainty_10_0.pdf",bbox_inches='tight')
+# Save results
+# plt.savefig("Module-2-Uncertainty_10_0.pdf",bbox_inches='tight')
 
+# Show the plot
 plt.show()
 
