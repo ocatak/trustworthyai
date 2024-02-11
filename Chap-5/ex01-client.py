@@ -34,7 +34,7 @@ class MnistClient(fl.client.NumPyClient):
     def evaluate(self, parameters, config):
         model.set_weights(parameters)
         loss, accuracy = model.evaluate(x_test, y_test)
-        model.save("global-model.tf")
+        #model.save("global-model.h5")
         return loss, len(x_test), {"accuracy": accuracy}
 
 # Start Flower client

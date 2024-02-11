@@ -5,7 +5,8 @@ Created on Fri Sep 29 12:24:57 2023
 
 @author: ozgur
 """
-
+#====================================
+# Import libraries
 import tensorflow as tf
 import numpy as np
 
