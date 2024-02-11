@@ -14,7 +14,7 @@ You can find "Trustworthy AI: From Theory to Practice" on Amazon to get a physic
 
 
 
-![Cover Image](path/to/book-cover.jpg)
+![Cover Image](book-cover.jpg)
 
 ## Repository Structure
 
