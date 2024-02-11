@@ -3,11 +3,11 @@
 """
 Created on Mon Sep 18 12:18:18 2023
 
-@author: ozgur
+@author: ozgur and murat
 """
-
-# Part 1
-
+#==============================================================================
+### Part 1
+#Import libraries
 import tensorflow as tf
 from cleverhans.tf2.attacks.fast_gradient_method import fast_gradient_method
 import numpy as np
@@ -17,8 +17,12 @@ from tqdm.keras import TqdmCallback
 
 # Load the MNIST digits dataset
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize pixel values to the range [0, 1]
 x_train = (x_train.astype('float32') / 255).reshape(x_train.shape[0], 28, 28, 1)
 x_test = (x_test.astype('float32') / 255).reshape(x_test.shape[0], 28, 28, 1)
+
+# Convert labels to one-hot encoding
 y_train = tf.keras.utils.to_categorical(y_train, num_classes=10)
 
 # Create the model
@@ -35,7 +39,6 @@ model.add(tf.keras.layers.Dense(128, activation='relu'))
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
 
 # Compiling and fitting is the same as in regular keras models as well:
-
 model.compile(loss=tf.keras.losses.categorical_crossentropy,
               optimizer='rmsprop',
               metrics=['accuracy'])
@@ -43,13 +46,17 @@ model.compile(loss=tf.keras.losses.categorical_crossentropy,
 model.fit(x_train, y_train, validation_split=0.1, batch_size=10000, epochs=50,
           verbose=0, callbacks=[TqdmCallback(verbose=1)])
 
+#==============================================================================
+### Part 2
 
 # Generate adversarial examples using FGSM
 epsilon = 0.1
 adv_x_test = fast_gradient_method(model.inner, x_test, epsilon, np.inf)
 
-# Predict class probabilities for original and adversarial examples
-quantifiers = ['var_ratio', 'pred_entropy', 'mutu_info', 'mean_softmax']
+# Class probabilities for original and adversarial examples
+quantifiers = ['var_ratio', 'pred_entropy', 'mean_softmax']
+
+# Predict class probabilities for original examples
 results = model.predict_quantified(x_test,
                                    quantifier=quantifiers,
                                    batch_size=1000,
@@ -59,6 +66,7 @@ results = model.predict_quantified(x_test,
 # Calculate the predictions and prediction uncertainties using the pcs and mean_softmax quantifiers
 predictions_orig, entropy_orig = results[1]
 
+# Predict class probabilities for adversarial examples
 results_adv = model.predict_quantified(adv_x_test.numpy(),
                                    quantifier=quantifiers,
                                    batch_size=1000,
@@ -67,6 +75,8 @@ results_adv = model.predict_quantified(adv_x_test.numpy(),
 # Calculate the predictions and prediction uncertainties using the pcs and mean_softmax quantifiers
 predictions_adv, entropy_adv = results_adv[1]
 
+#==============================================================================
+### Part 3
 # Set a threshold to determine highly uncertain instances
 threshold = 1.95
 
@@ -99,12 +109,15 @@ for i in range(0, min(len(sorted_indices), 2), 2):
 # Adjust the padding between the subplots
 plt.tight_layout()
 
-# plt.savefig("../../../Module-2-Uncertainty_files/Module-2-Uncertainty_24_5.pdf",bbox_inches='tight')
+# Save results
+plt.savefig("Module-2-Uncertainty_24_5.pdf",bbox_inches='tight')
 
+# Show the plot
 plt.show()
 
 
-# Part 2
+#==============================================================================
+# Part4
 
 # Create a subplot with 1 row and 2 columns
 fig, axs = plt.subplots(1, 2, figsize=(10, 5))
@@ -124,8 +137,23 @@ axs[1].set_title('Distribution of Uncertainty for Adversarial Inputs')
 # Adjust the padding between the subplots
 plt.tight_layout()
 
-plt.savefig("../../../Module-2-Uncertainty_files/Module-2-Uncertainty_26_0.pdf",bbox_inches='tight')
+plt.savefig("Module-2-Uncertainty_26_0.pdf",bbox_inches='tight')
 
 
 # Show the plot
 plt.show()
+
+#==============================================================================
+# Part5
+# Detect adversarial inputs using uncertainty
+threshold = entropy_orig.mean()
+adversarial_indices = np.where(entropy_adv > threshold )[0]
+normal_indices = np.where(entropy_orig <= threshold)[0]
+
+# Calculate success rate of detection
+success_rate = len(adversarial_indices) / (len(adversarial_indices) + len(normal_indices))
+
+print(f"Success rate of detecting adversarial inputs: {success_rate:.2%}")
+
+
+

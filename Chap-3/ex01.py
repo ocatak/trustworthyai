@@ -3,9 +3,10 @@
 """
 Created on Fri Sep 29 12:22:28 2023
 
-@author: ozgur
+@author: ozgur 
 """
-
+#====================================
+# Import libraries
 import sympy as sp
 from IPython.display import display, Markdown
 
