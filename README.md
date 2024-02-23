@@ -14,7 +14,7 @@ You can find "Trustworthy AI: From Theory to Practice" on Amazon to get a physic
 
 
 
-![Cover Image](book-cover.jpg)
+![Trustworthy AI book](trustworthy-ai-from-theory-to-practice-cover.jpg)
 
 ## Repository Structure
 
@@ -27,6 +27,9 @@ This repository is organized by chapters, with each chapter having its own subfo
 - [`Chap-5`](Chap-5): Privacy-Preserving Artificial Intelligence: Federated Learning
 - [`Chap-6`](Chap-6): Privacy-Preserving Artificial Intelligence: Homomorphic Encryption
 - Additional resources and updates can be found in the respective chapter folders.
+
+[![Contributors](https://img.shields.io/github/contributors/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/graphs/contributors)
+
 
 ## Getting Started
 
