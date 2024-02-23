@@ -1,5 +1,7 @@
 # Trustworthy AI: From Theory to Practice
 
+[![Contributors](https://img.shields.io/github/contributors/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/graphs/contributors)
+
 ## About the Book
 
 "Trustworthy AI: From Theory to Practice" is a comprehensive guide focused on implementing and developing AI models that adhere to the principles of trustworthiness, including privacy, security, and robustness. Through practical implementations and examples using Python, this book aims to equip readers with the skills and knowledge necessary to integrate these crucial aspects into AI projects. It covers a wide range of topics, from uncertainty quantification and adversarial machine learning to privacy-preserving techniques like federated learning and homomorphic encryption, providing a solid foundation for building ethical and reliable AI systems.
@@ -28,7 +30,7 @@ This repository is organized by chapters, with each chapter having its own subfo
 - [`Chap-6`](Chap-6): Privacy-Preserving Artificial Intelligence: Homomorphic Encryption
 - Additional resources and updates can be found in the respective chapter folders.
 
-[![Contributors](https://img.shields.io/github/contributors/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/graphs/contributors)
+
 
 
 ## Getting Started
