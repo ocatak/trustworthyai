@@ -59,4 +59,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-This book and the accompanying repository have been made possible by the collaborative efforts of the course "DAT945: Secure and Robust AI Model Development" at the University of Stavanger, Norway, and the support from [NORA.AI](https://www.nora.ai), the Norwegian Artificial Intelligence Research Consortium. We extend our gratitude to all contributors and supporters of this project.
+This book and the accompanying repository have been made possible by the collaborative efforts of the course [`DAT945: Secure and Robust AI Model Development`](https://www.uis.no/en/course/DAT945_1) at the University of Stavanger, Norway, and the support from [NORA.AI](https://www.nora.ai), the Norwegian Artificial Intelligence Research Consortium. We extend our gratitude to all contributors and supporters of this project.
