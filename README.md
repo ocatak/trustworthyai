@@ -2,6 +2,7 @@
 
 [![Contributors](https://img.shields.io/github/contributors/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/graphs/contributors)
 [![License](https://img.shields.io/github/license/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/blob/master/LICENSE)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/pulls)
 [![Last Commit](https://img.shields.io/github/last-commit/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/commits/master)
 [![GitHub stars](https://img.shields.io/github/stars/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/network)
