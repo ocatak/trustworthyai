@@ -1,6 +1,12 @@
 # Trustworthy AI: From Theory to Practice
 
 [![Contributors](https://img.shields.io/github/contributors/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/graphs/contributors)
+[![License](https://img.shields.io/github/license/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/blob/master/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/commits/master)
+[![GitHub stars](https://img.shields.io/github/stars/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/ocatak/trustworthyai.svg)](https://github.com/ocatak/trustworthyai/network)
+[![Twitter Follow](https://img.shields.io/twitter/follow/your_twitter_handle.svg?style=social&label=Follow)](https://twitter.com/ozgurcatak)
+
 
 ## About the Book
 
